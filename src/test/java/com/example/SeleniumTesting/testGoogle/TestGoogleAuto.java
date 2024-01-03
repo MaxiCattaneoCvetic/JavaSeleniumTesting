@@ -33,7 +33,7 @@ public class TestGoogleAuto {
         String value = searchBox.getAttribute("value");
         System.out.println(value);
 
-        webDriver.close();
+        webDriver.quit();
 
     }
 
