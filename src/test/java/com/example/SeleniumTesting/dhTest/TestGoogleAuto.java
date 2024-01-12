@@ -1,4 +1,4 @@
-package com.example.SeleniumTesting.testGoogle;
+package com.example.SeleniumTesting.dhTest;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;

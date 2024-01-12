@@ -3,55 +3,67 @@ package com.example.SeleniumTesting;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 
 public class BasePage {
 
     //creamos esta clase para que sea nuestra superclase
     public WebDriver driver;
 
+    public WebDriverWait wait;
 
-    public BasePage(WebDriver driver) {
+    protected BasePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
+        this.wait = new WebDriverWait(driver, Duration.ofMillis(3000)); // -> No es que hacemos una espera de 3s, sino que esperamos hasta 3 segundos
+        // En el caso de que elocalizador se encuentre antes no hara la espera
     }
 
-    public BasePage() {
+    protected BasePage() {
     }
 
 
-    public void setup() {
+/*    public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-    }
+    }*/
 
-    public void getUrl(String url) {
-        driver.get(url);
+    public void getUrl(String url)  {
+        driver.navigate().to(url);
     }
 
     public void close() {
         driver.quit();
     }
 
-    public WebElement findElement(By locator) {
+    protected WebElement findElement(By locator) {
         return driver.findElement(locator);
     }
 
-    public void sendText(String text, By locator) {
+    protected void sendText(String text, By locator) throws InterruptedException {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator)); // -> Esperamos a que el localizador este presente
         //recibe dos parametros el texto y el localizador
         this.findElement(locator).clear(); // ---> Limpiamos por si hay algo escrito
         this.findElement(locator).sendKeys(text); // -- > Enviamos el texto
     }
 
-    public void sendKey(CharSequence key, By locator) {
+    protected void sendKey(CharSequence key, By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator)); // -> Esperamos a que el localizador este presente
+
         this.findElement(locator).sendKeys(key);
 
     }
 
-    public void click (By locator) {
+    protected void click (By locator) {
+        wait.until(ExpectedConditions.elementToBeClickable(locator)); // -> Esperamos a que el elemento se clickee
         this.findElement(locator).click();
     }
 
-    public String getText(By locator) {
+    protected String getText(By locator) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator)); // -> Esperamos a que el localizador este presente
         return this.findElement(locator).getText();
 
     }
