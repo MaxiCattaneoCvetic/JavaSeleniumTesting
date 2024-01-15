@@ -1,8 +1,9 @@
-package com.example.SeleniumTesting;
+package com.example.SeleniumTesting.patronPOM;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -26,12 +27,12 @@ public class BasePage {
     }
 
 
-/*    public void setup() {
+    public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-    }*/
+    }
 
-    public void getUrl(String url)  {
+    public void getUrl(String url) {
         driver.navigate().to(url);
     }
 
@@ -57,7 +58,7 @@ public class BasePage {
 
     }
 
-    protected void click (By locator) {
+    protected void click(By locator) {
         wait.until(ExpectedConditions.elementToBeClickable(locator)); // -> Esperamos a que el elemento se clickee
         this.findElement(locator).click();
     }
@@ -67,13 +68,6 @@ public class BasePage {
         return this.findElement(locator).getText();
 
     }
-
-
-
-
-
-
-
 
 
 }

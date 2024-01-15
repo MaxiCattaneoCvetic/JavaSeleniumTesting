@@ -1,10 +1,10 @@
-package com.example.SeleniumTesting.dhTest;
+package com.example.SeleniumTesting.patronPOMtest;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import com.example.SeleniumTesting.SearchPage;
+import com.example.SeleniumTesting.patronPOM.SearchPage;
 import org.junit.jupiter.api.*;
 
 import org.openqa.selenium.WebDriver;

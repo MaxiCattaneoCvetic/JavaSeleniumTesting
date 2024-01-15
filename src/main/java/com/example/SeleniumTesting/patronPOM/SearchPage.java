@@ -1,4 +1,4 @@
-package com.example.SeleniumTesting;
+package com.example.SeleniumTesting.patronPOM;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.WebDriverWait;

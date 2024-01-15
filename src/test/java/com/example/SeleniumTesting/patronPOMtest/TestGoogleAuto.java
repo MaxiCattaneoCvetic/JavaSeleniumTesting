@@ -1,4 +1,4 @@
-package com.example.SeleniumTesting.dhTest;
+package com.example.SeleniumTesting.patronPOMtest;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
